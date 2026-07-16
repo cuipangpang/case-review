@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>计算机 - 案例评审分析</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="brand" style="text-decoration:none;">&#8592; 首页</a>
+      <div class="nav-links">
+        <a href="#review">试评审</a>
+        <a href="#topics">选题适用性</a>
+        <a href="#scoring">评分维度</a>
+        <a href="#checklist">格式检查</a>
+        <a href="#pitfalls">常见雷区</a>
+        <a href="#fulltext">案例文稿</a>
+        <a href="#rubric">Rubric</a>
+      </div>
+    </div>
+  </nav>
+<div class="container">
+
+<div class="section" id="review">
+  <h2>一、案例试评审报告</h2>
+  <p><strong>案例名称：</strong>基于YOLOv8的被动毫米波违禁品实时检测系统在安检场景下的应用</p>
+  <p><strong>评审标准：</strong>工程类教学案例四维标准（前沿性 / 交叉性 / 典型性 / 启发性）</p>
+
+  <div class="card">
+    <h3>1. 前沿性 <span class="badge badge-pass">达标</span></h3>
+    <p><strong>满足项：</strong>案例所涉YOLOv8目标检测框架（2023年开源发布）、GSConv分组混洗卷积、Slim-Neck精简化特征金字塔等均为当前计算机视觉领域的前沿技术。被动毫米波成像在安检场景下的应用属于行业尚未充分解决的难题（低分辨率、小目标检测），案例展示了如何通过创新性的模型轻量化改造为学员提供接触最新工程知识的机会。第1.4节对小目标检测作为"尚未被充分解决的前沿难题"的阐述，体现了对技术前沿性的深刻理解。四轮渐进式消融实验的设计（基线→GSConv→Slim-Neck→组合方案→LADH）本身就是前沿工程研究方法的规范展示。</p>
+    <p><strong>建议优化：</strong>(1) 数据集构建过程可进一步补充细节（划分标准、标注规范等）；(2) 消融实验表格中Slim-Neck单独轮的GFLOPs和模型体积数据可补充完整。</p>
+  </div>
+
+  <div class="card">
+    <h3>2. 交叉性 <span class="badge badge-pass">达标</span></h3>
+    <p><strong>满足项：</strong>案例的交叉性体现层次丰富：(1) 算法设计与嵌入式硬件约束的双向适配（计算机视觉×计算机体系结构），第2.1节对"算法—硬件协同设计"的阐述体现了工程交叉的核心特征；(2) 技术团队与安检行业的需求对接（计算机科学×公共安全），第2.2节展示了如何将一线安检员的需求（召回率优先于精确率）转化为可量化的技术指标；(3) 跨学科团队的组织方式（算法工程师×嵌入式工程师×行业专家），第2.3节描述了三方角色的常态化协作机制。这种多重交叉维度的呈现，有助于学员理解工程实践中跨学科协作的真实面貌。</p>
+    <p><strong>建议优化：</strong>嵌入式部署环节（INT8量化、结构化剪枝）的技术细节可进一步充实，补充量化精度损失数据等工程参数。</p>
+  </div>
+
+  <div class="card">
+    <h3>3. 典型性 <span class="badge badge-pass">达标</span></h3>
+    <p><strong>满足项：</strong>案例取材于实际工程环境（高校科研团队与安检设备企业的联合研发），聚焦嵌入式AI系统"精度-速度-模型体积"多目标权衡这一工程核心难题。第4节"从实验室到产线的部署与验证"是典型性评价的关键环节——模型部署至边缘计算单元后的推理帧率验证、跨季节泛化挑战、典型误检漏检案例复盘，均是工程项目从实验室走向实际应用的必经考验。第4.3节误检案例的归因分析（身体姿态扭转、多人重叠通过、紧贴身体侧面等场景）展示了真实工程环境下的失败案例复盘方法，具有很强的推广借鉴价值。</p>
+    <p><strong>建议优化：</strong>(1) 基线模型横向对比可补充完整数据表格；(2) 设备制造成本降低可给出更具体的量化数据。</p>
+  </div>
+
+  <div class="card">
+    <h3>4. 启发性 <span class="badge badge-pass">达标</span></h3>
+    <p><strong>满足项：</strong>案例的启发性是其最突出的亮点。第5节"复盘与启发"将具体工程实践抽象为可迁移的方法论：(1) "用特征融合补偿轻量化损失"的方法论提炼（第5.1节），将个案经验上升为具有普适意义的工程原则；(2) LADH检测头"知道能做、但主动选择不做"的工程判断力（第5.2节），展示了边际收益递减的工程决策智慧；(3) "从个案到方法论"的知识迁移价值（第5.3节），将技术路线总结为适用于其他嵌入式AI系统场景的通用框架。这些方法论提炼超越了具体项目叙事，为学员在其他工程项目中的实践提供了可复用的思维工具。</p>
+    <p><strong>建议优化：</strong>尾声部分对未来方向的讨论可适当展开，增强技术可行性分析。</p>
+  </div>
+
+  <div class="card">
+    <h3>教学指导手册评审</h3>
+    <p><strong>满足项：</strong>教学目标明确，三个层面递进（技术方法掌握→消融实验能力→工程素养培养）。5道启发思考题设计出色：从"反直觉"实验结果分析、风险预防决策、边际收益判断，到技术路线比较、小样本泛化方案，层层递进。理论框架涵盖特征金字塔方法论、精度-效率权衡理论、结构化消融实验方法论三条线索。课堂设计90分钟6环节完备，包含分组研讨与辩论。</p>
+    <p><strong>建议优化：</strong>参考文献可扩充至8条以上，补充工程方法论、模型部署相关教材或综述文献。</p>
+  </div>
+</div>
+
+<div class="section" id="topics">
+  <h2>二、选题适用性标准</h2>
+  <p>以下5类选题方向适合计算机/电子信息学科作为工程案例素材：</p>
+
+  <div class="card">
+    <h3>方向一：边缘计算与嵌入式AI系统部署</h3>
+    <p><strong>适合性判断：</strong>边缘设备上运行大模型是当前工业界热点。决策点明确（模型压缩策略选择、量化精度权衡），公开技术文献充足，契合端侧AI部署的产业需求。工程环境真实（算力/功耗/成本约束），具备方法论提炼空间。</p>
+  </div>
+
+  <div class="card">
+    <h3>方向二：工业质检与智能制造</h3>
+    <p><strong>适合性判断：</strong>视觉检测在制造业中的应用具有明确工程环境（产线速度、缺陷类型多样性）。决策点清晰（检测算法选型、数据不平衡处理），可获取企业合作的一手资料。契合"制造强国"政策导向。理论空间涵盖小样本学习、域适应等。</p>
+  </div>
+
+  <div class="card">
+    <h3>方向三：大语言模型微调与部署优化</h3>
+    <p><strong>适合性判断：</strong>LoRA/QLoRA等参数高效微调技术是当前研究热点。决策点明确（微调策略选择、推理加速方案），开源社区文献充足，契合AI大模型产业化趋势。可对接模型压缩、知识蒸馏、推理优化等理论。</p>
+  </div>
+
+  <div class="card">
+    <h3>方向四：多模态感知与自动驾驶</h3>
+    <p><strong>适合性判断：</strong>多传感器融合（激光雷达+摄像头+毫米波雷达）是自动驾驶核心技术。决策点清晰（融合策略设计、长尾场景处理），公开数据集充足（nuScenes、Waymo等），契合智能交通政策。工程环境真实（实时性、安全性约束）。</p>
+  </div>
+
+  <div class="card">
+    <h3>方向五：隐私计算与联邦学习</h3>
+    <p><strong>适合性判断：</strong>数据隐私保护与模型协作训练的需求日益增长。决策点明确（隐私保护方案选型、通信效率优化），学术文献充足，契合数据安全法、个人信息保护法实施背景。可对接密码学、分布式系统等交叉理论。</p>
+  </div>
+</div>
+
+<div class="section" id="scoring">
+  <h2>三、量化评分维度与权重</h2>
+
+  <div class="card">
+    <div class="score-row"><div class="score-dim">前沿性</div><div class="score-bar-bg"><div class="score-bar" style="width:90%;background:#CC785C;"></div></div><div class="score-val">4.5/5</div><div class="score-weight">权重25%</div></div>
+    <div class="score-row"><div class="score-dim">交叉性</div><div class="score-bar-bg"><div class="score-bar" style="width:92%;background:#CC785C;"></div></div><div class="score-val">4.6/5</div><div class="score-weight">权重20%</div></div>
+    <div class="score-row"><div class="score-dim">典型性</div><div class="score-bar-bg"><div class="score-bar" style="width:88%;background:#CC785C;"></div></div><div class="score-val">4.4/5</div><div class="score-weight">权重20%</div></div>
+    <div class="score-row"><div class="score-dim">启发性</div><div class="score-bar-bg"><div class="score-bar" style="width:94%;background:#CC785C;"></div></div><div class="score-val">4.7/5</div><div class="score-weight">权重20%</div></div>
+    <div class="score-row"><div class="score-dim">教学手册质量</div><div class="score-bar-bg"><div class="score-bar" style="width:86%;background:#CC785C;"></div></div><div class="score-val">4.3/5</div><div class="score-weight">权重15%</div></div>
+  </div>
+
+  <div class="chart-container"><canvas id="radarChart"></canvas></div>
+
+  <div class="card">
+    <h3>评分锚点说明</h3>
+    <table>
+      <tr><th>分数</th><th>锚点描述</th><th>本案例参考依据</th></tr>
+      <tr><td>5分</td><td>卓越：技术领先、跨学科深度融合、方法论高度可迁移</td><td>—</td></tr>
+      <tr><td>4分</td><td>优良：技术前沿、交叉维度丰富、有明确方法论提炼</td><td>本案例各维度均处于此水平</td></tr>
+      <tr><td>3分</td><td>合格：技术基本前沿、有一定交叉、方法论提炼不足</td><td>数据集构建、部署细节等</td></tr>
+      <tr><td>2分</td><td>待改：技术偏旧或交叉薄弱、缺乏可迁移价值</td><td>—</td></tr>
+      <tr><td>1分</td><td>不达标：脱离工程实际或纯技术报告式写作</td><td>—</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section" id="checklist">
+  <h2>四、格式合格 Checklist</h2>
+  <ul class="checklist">
+    <li class="required"><span class="badge badge-must">必须</span><span class="badge badge-pass">达标</span> 案例名称宋体三号加粗居中</li>
+    <li class="required"><span class="badge badge-must">必须</span><span class="badge badge-pass">达标</span> 中英文摘要及关键词齐全（YOLOv8等英文术语正确）</li>
+    <li class="required"><span class="badge badge-must">必须</span><span class="badge badge-pass">达标</span> 作者信息完整</li>
+    <li class="required"><span class="badge badge-must">必须</span><span class="badge badge-pass">达标</span> 正文标题层级阿拉伯数字编号</li>
+    <li class="required"><span class="badge badge-must">必须</span><span class="badge badge-pass">达标</span> 正文宋体小四号，首行缩进，行距1.25倍</li>
+    <li class="required"><span class="badge badge-must">必须</span><span class="badge badge-pass">达标</span> 脚注楷体小五号，编号规范</li>
+    <li class="required"><span class="badge badge-must">必须</span><span class="badge badge-pass">达标</span> 图表编号连续（表1、表2）</li>
+    <li class="required"><span class="badge badge-must">必须</span><span class="badge badge-pass">达标</span> 字数约15600字，超过10000字下限</li>
+    <li class="required"><span class="badge badge-must">必须</span><span class="badge badge-pass">达标</span> 首页三项声明脚注完整</li>
+    <li class="required"><span class="badge badge-must">必须</span><span class="badge badge-pass">达标</span> 附录包含消融实验完整数据与部署环境参数</li>
+    <li class="optional"><span class="badge badge-rec">建议</span><span class="badge badge-fail">待改</span> 表1中Slim-Neck单独轮的GFLOPs/模型体积数据补充完整</li>
+    <li class="optional"><span class="badge badge-rec">建议</span><span class="badge badge-fail">待改</span> 教学手册参考文献补充至8条以上</li>
+    <li class="optional"><span class="badge badge-rec">建议</span><span class="badge badge-fail">待改</span> 基线模型横向对比补充完整数据表格</li>
+  </ul>
+</div>
+
+<div class="section" id="pitfalls">
+  <h2>五、常见错误 / 雷区清单</h2>
+
+  <h3>雷区一：消融实验数据不完整</h3>
+  <div class="error-grid">
+    <div class="error-card bad"><div class="label">&#10060; 错误示例</div><p>表1中"+Slim-Neck"单独一轮的GFLOPs和模型体积均标注为"—"（缺失），读者无法判断Slim-Neck结构本身对模型体积和计算量的独立影响。</p></div>
+    <div class="error-card good"><div class="label">&#9989; 正确做法</div><p>每一轮消融实验的所有关键指标（GFLOPs、模型体积、召回率、mAP50、mAP50-95）均应完整记录，确保读者可以独立评估每一步改动的独立贡献。</p></div>
+  </div>
+
+  <h3>雷区二：工程论文式写作而非案例叙事</h3>
+  <div class="error-grid">
+    <div class="error-card bad"><div class="label">&#10060; 错误示例</div><p>全文按"方法→实验→结果"的学术论文结构组织，缺少项目背景叙事、团队决策过程、权衡取舍的真实记录，读起来像一篇技术报告而非教学案例。</p></div>
+    <div class="error-card good"><div class="label">&#9989; 正确做法</div><p>本案例的引言以安检场景的真实画面开篇，正文中穿插团队的项目日志记录（"预期是精度小幅下滑，实际结果却是精度不降反升"），将技术决策置于真实工程情境中呈现。</p></div>
+  </div>
+
+  <h3>雷区三：缺少失败案例复盘</h3>
+  <div class="error-grid">
+    <div class="error-card bad"><div class="label">&#10060; 错误示例</div><p>全文仅展示成功的实验结果和指标提升，对LADH检测头"最终未采纳"的决策只用一句话带过，缺少对失败原因的深入分析。</p></div>
+    <div class="error-card good"><div class="label">&#9989; 正确做法</div><p>本案例第5.2节专门用一整节讨论LADH检测头的"边际收益递减"判断，并赋予"一次没有采纳的技术决策同样具有教学价值"的标题，将"不做"的决策提升到与"做"的决策同等的教学高度。</p></div>
+  </div>
+
+  <h3>雷区四：跨数据集对比陷阱</h3>
+  <div class="error-grid">
+    <div class="error-card bad"><div class="label">&#10060; 错误示例</div><p>基线模型对比时直接引用其他论文中在不同数据集上报告的mAP指标进行横向比较，未说明数据集差异对指标的影响。</p></div>
+    <div class="error-card good"><div class="label">&#9989; 正确做法</div><p>本案例第3.5节明确指出"团队在横向对比实验中严格控制了训练数据集、训练轮数、硬件环境等变量的一致性"，并警示"预处理方式、数据划分比例不一致"等隐蔽对比陷阱。</p></div>
+  </div>
+
+  <h3>雷区五：正文中引用文献格式不规范</h3>
+  <div class="error-grid">
+    <div class="error-card bad"><div class="label">&#10060; 错误示例</div><p>脚注中引用格式混乱："参见[某网站]关于YOLO的介绍"——缺乏作者、年份、完整URL等关键信息。</p></div>
+    <div class="error-card good"><div class="label">&#9989; 正确做法</div><p>本案例脚注引用格式规范："Jocher, G., Chaurasia, A., Qiu, J. Ultralytics YOLOv8[EB/OL]. GitHub, 2023. https://github.com/..."，且附录中汇总了完整的文献列表。</p></div>
+  </div>
+</div>
+
+<div class="section" id="fulltext">
+  <h2>六、完整案例文稿展示</h2>
+  <div class="case-text">
+    <h3 style="text-align:center;">基于YOLOv8的被动毫米波违禁品实时检测系统在安检场景下的应用</h3>
+    <p style="text-align:center; color:#888; font-size:0.9rem;">透视违禁品：被动毫米波安检场景下的YOLOv8轻量化实时检测系统研发</p>
+
+    <h4>摘要</h4>
+    <p>随着高铁站、地铁站、机场、大型活动场馆的人流量持续攀升，安检环节正面临"通过速度"与"检测精度"的双重压力。被动式毫米波（PMMW）成像技术具有完全无电离辐射、无需主动发射信号、隐私侵扰更小的优势，但PMMW图像天然存在空间分辨率低、单帧信息量少、噪声大、隐藏物体尺寸小等固有难题。本案例聚焦某高校科研团队与安检设备企业联合开展的"基于YOLOv8与PMMW的小尺寸违禁品实时检测系统"研发项目，还原团队在基线模型选型、主干网络轻量化、颈部特征融合结构改进、检测头设计等一系列技术路线抉择中的权衡取舍过程。</p>
+
+    <h3>引言</h3>
+    <p>清晨七点半，某城市地铁换乘枢纽的安检口前，队伍已经排出了几十米。安检员紧盯着屏幕上模糊的灰阶图像——那是被动式毫米波成像仪实时采集的乘客体表信息。但也正因为如此，画面里每一帧图像所携带的信息量都非常有限：分辨率低、对比度差、背景噪声多，藏匿在衣物下的违禁物品往往只有拳头大小甚至更小。</p>
+    <p>团队接到的研发任务：让算法替安检员的眼睛去"盯"，而且必须足够快。团队面前摆着两条看似矛盾的技术要求：精度要够高，模型要够小、够快。</p>
+
+    <h3>1. 技术前沿性：从成像原理到检测框架的路线选型</h3>
+    <h4>1.1 为什么是被动毫米波，而不是主动式毫米波或X光</h4>
+    <p>被动式毫米波成像仅接收人体自身及环境辐射出的毫米波能量，具有完全无电离辐射、隐私侵扰更小的独特优势，但代价是空间分辨率和对比度天然偏低。</p>
+
+    <h4>1.2 为什么选YOLOv8作为基线模型</h4>
+    <p>YOLOv8作为较新的一代，在工业界积累了大量成熟的轻量化改造经验和部署工具链，是团队综合考量精度、速度、可部署性后选定的基线框架。</p>
+
+    <h3>2. 多学科交叉：计算机视觉、嵌入式工程与安检行业需求的协同攻关</h3>
+    <h4>2.1 算法设计与嵌入式硬件约束的双向适配</h4>
+    <p>团队在模型每一次结构改动时，都必须同时评估推理速度、显存占用、模型体积三方面的影响。这种"算法—硬件协同设计"思路，是嵌入式人工智能系统的核心工程特征。</p>
+
+    <h4>2.2 与安检行业实际需求的对接</h4>
+    <p>团队特别关注了召回率与精确率之间的平衡：漏检的代价远高于误报的代价，要求团队在损失函数设计等环节有意识地向召回率倾斜。</p>
+
+    <h3>3. 关键技术难点与路线抉择：四轮渐进式消融实验</h3>
+    <table>
+      <tr><th>方案</th><th>GFLOPs</th><th>模型体积(MB)</th><th>召回率</th><th>mAP50</th><th>mAP50-95</th></tr>
+      <tr><td>基线（YOLOv8）</td><td>8.1</td><td>6.2</td><td>0.854</td><td>0.931</td><td>0.764</td></tr>
+      <tr><td>+GSConv</td><td>6.9</td><td>5.4</td><td>0.927</td><td>0.930</td><td>0.764</td></tr>
+      <tr><td>+Slim-Neck</td><td>—</td><td>—</td><td>—</td><td>0.947</td><td>0.781</td></tr>
+      <tr><td>+GSConv+Slim-Neck+逐元素乘法</td><td>6.0</td><td>5.0</td><td>0.933</td><td>0.963</td><td>0.781</td></tr>
+      <tr><td>+LADH检测头</td><td>5.6</td><td>—</td><td>0.891</td><td>—</td><td>约0.790</td></tr>
+    </table>
+
+    <h4>3.2 第二轮：GSConv替换Backbone</h4>
+    <p>引入GSConv（分组混洗卷积）后，计算量从8.1 GFLOPs降至6.9 GFLOPs，但召回率不降反升，从0.854提升至0.927——这一"反直觉"结果验证了通道混洗操作在小目标检测中的关键作用。</p>
+
+    <h4>3.3 第三轮：Slim-Neck方案</h4>
+    <p>在颈部网络引入Slim-Neck结构强化多尺度特征融合，mAP50提升至0.947，验证了"用更高效的多尺度特征融合方式补偿主干网络轻量化的潜在精度损失"这一技术路线。</p>
+
+    <h3>4. 典型性检验：从实验室到产线的部署与验证</h3>
+    <h4>4.1 部署环境与现场验证</h4>
+    <p>团队将改进后的轻量化模型部署至安检设备内置的边缘计算单元，针对不同季节、不同衣物条件下的成像差异进行了针对性数据增强。</p>
+
+    <h4>4.3 典型误检案例的复盘分析</h4>
+    <p>误检集中在身体姿态大幅扭转或多人重叠通过的场景，漏检主要出现在违禁品紧贴身体侧面、信号强度较弱的边缘区域。</p>
+
+    <h3>5. 复盘与启发：打破"轻量化必然牺牲精度"的工程直觉</h3>
+    <h4>5.1 方法论提炼</h4>
+    <p>当轻量化改造面临"精度必然下降"的工程直觉阻力时，可以通过在特征融合层引入更高效的多尺度语义融合结构，来主动补偿主干网络轻量化带来的潜在特征表达能力损失。</p>
+
+    <h4>5.2 边际收益递减</h4>
+    <p>LADH检测头的引入虽可进一步压缩计算量，但精度损失已超出可接受范围。"知道能做、但主动选择不做"的工程判断力，是工程教育中最容易被忽视却至关重要的能力。</p>
+
+    <h3>6. 总结与展望</h3>
+    <p>项目最终交付的轻量化检测系统，在计算量下降约26%的前提下实现了小目标检测精度不降反升。团队坦承当前方案仍存在跨设备泛化验证不充分的局限，未来方向包括生成式模型合成训练数据和跨模态融合方案。</p>
+
+    <div class="footnote">
+      <p><strong>脚注引用文献：</strong></p>
+      <p>[1] Jocher G, Chaurasia A, Qiu J. Ultralytics YOLOv8. GitHub, 2023.</p>
+      <p>[2] Pang L, et al. Real-time Concealed Object Detection from PMMW Images Based on YOLOv3. Sensors, 2020, 20(6): 1678.</p>
+      <p>[3] Li H, et al. Slim-neck by GSConv. Journal of Real-Time Image Processing, 2024.</p>
+      <p>[4] Lin T Y, et al. Feature Pyramid Networks for Object Detection. CVPR, 2017: 2117-2125.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="rubric">
+  <h2>七、结构化 Prompt / Rubric</h2>
+  <div class="code-block">
+{
+  "discipline": "计算机（工程类）",
+  "case_type": "工程类教学案例",
+  "case_topic_criteria": {
+    "suitable_directions": [
+      "边缘计算与嵌入式AI系统部署",
+      "工业质检与智能制造",
+      "大语言模型微调与部署优化",
+      "多模态感知与自动驾驶",
+      "隐私计算与联邦学习"
+    ],
+    "selection_standards": [
+      "是否涉及前沿工程技术或尚未充分解决的问题",
+      "是否具有真实的工程环境约束（算力/功耗/成本/安全）",
+      "是否体现多学科交叉融合",
+      "是否具备可提炼迁移的方法论价值"
+    ]
+  },
+  "scoring_dimensions": [
+    {"name": "前沿性", "weight": 25, "anchors": {"5": "技术处于行业领先，展示创新解决方案", "3": "技术基本前沿但缺乏创新", "1": "技术陈旧或脱离前沿"}},
+    {"name": "交叉性", "weight": 20, "anchors": {"5": "多维交叉融合深入，团队协作体现充分", "3": "有一定交叉但深度不足", "1": "单一技术领域，缺乏交叉"}},
+    {"name": "典型性", "weight": 20, "anchors": {"5": "取材真实工程环境，具备广泛推广价值", "3": "有工程背景但推广性有限", "1": "脱离实际或仅为实验室演示"}},
+    {"name": "启发性", "weight": 20, "anchors": {"5": "方法论提炼清晰，支持知识迁移", "3": "有一定启发但缺乏系统性", "1": "仅叙述具体项目，无可迁移价值"}},
+    {"name": "教学手册质量", "weight": 15, "anchors": {"5": "理论框架完备，实验分析深入", "3": "基本齐备但深度不足", "1": "手册缺失或流于形式"}}
+  ],
+  "format_checklist": [
+    {"item": "案例名称宋体三号加粗居中", "level": "必须", "status": "pass"},
+    {"item": "中英文摘要及关键词齐全", "level": "必须", "status": "pass"},
+    {"item": "正文不少于10000字", "level": "必须", "status": "pass"},
+    {"item": "脚注楷体小五号", "level": "必须", "status": "pass"},
+    {"item": "图表阿拉伯数字连续编号", "level": "必须", "status": "pass"},
+    {"item": "首页三项声明脚注", "level": "必须", "status": "pass"},
+    {"item": "附录含完整实验数据", "level": "必须", "status": "pass"},
+    {"item": "消融实验数据完整无缺失", "level": "建议", "status": "fail"},
+    {"item": "教学手册参考文献8条以上", "level": "建议", "status": "fail"},
+    {"item": "基线对比完整数据表格", "level": "建议", "status": "pending"}
+  ],
+  "common_pitfalls": [
+    {"pitfall": "消融实验数据不完整", "fix": "每轮实验的所有关键指标均应完整记录"},
+    {"pitfall": "工程论文式写作而非案例叙事", "fix": "穿插项目日志、决策过程、真实情境描写"},
+    {"pitfall": "缺少失败案例复盘", "fix": "对未采纳的技术方案同样进行深入分析"},
+    {"pitfall": "跨数据集对比陷阱", "fix": "严格控制训练条件一致性，明确标注实验设置"},
+    {"pitfall": "技术细节过于专业缺乏可读性", "fix": "关键术语首次出现时增加通俗解释"},
+    {"pitfall": "部署环节描述过于概要", "fix": "补充量化精度损失、推理框架选型等工程参数"}
+  ]
+}
+  </div>
+</div>
+
+</div>
+
+  <div class="download-btns">
+    <a href="assets/pdfs/cs_case.pdf" download class="btn btn-primary">&#128196; 下载案例正文 PDF</a>
+    <a href="assets/pdfs/cs_guide.pdf" download class="btn btn-outline">&#128203; 下载教学指导手册 PDF</a>
+  </div>
+  <footer class="footer">
+    <p><a href="index.html">返回首页</a></p>
+    <p style="margin-top:0.5rem;">中国专业学位案例中心主题案例评审分析 &copy; 2026</p>
+  </footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var ctx = document.getElementById('radarChart');
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['前沿性', '交叉性', '典型性', '启发性', '教学手册'],
+        datasets: [{
+          label: '计算机案例评分',
+          data: [4.5, 4.6, 4.4, 4.7, 4.3],
+          backgroundColor: 'rgba(204,120,92,0.15)',
+          borderColor: '#CC785C',
+          borderWidth: 2,
+          pointBackgroundColor: '#CC785C',
+          pointRadius: 5
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: { r: { min: 0, max: 5, ticks: { stepSize: 1, font: { size: 11 } }, pointLabels: { font: { size: 13 } }, grid: { color: '#E8E4DE' } } },
+        plugins: { legend: { labels: { font: { size: 13 } } } }
+      }
+    });
+  }
+});
+</script>
+</body></html>

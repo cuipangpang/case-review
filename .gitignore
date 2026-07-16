@@ -1,0 +1,8 @@
+_texts/
+_extracted_texts.json
+_gen_pages.py
+_gen_law.py
+_gen_cs.py
+*.pdf
+!assets/pdfs/*.pdf
+.qoder/
